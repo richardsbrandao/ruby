@@ -1,0 +1,20 @@
+// Place all the styles related to the contacts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-group-sm {
+	.btn {
+		margin-top:5px;
+	}
+}
+
+.controls{
+	.select-date.form-control {
+		width: 32%;
+		display: inline;
+	}
+}
+
+footer {
+	margin-top:5px;
+}

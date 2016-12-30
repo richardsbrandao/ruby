@@ -1,0 +1,13 @@
+it:
+  activerecord:
+    models:
+      contact: Contatto
+    attributes:
+      contact:
+        id: Id
+        name: Nome
+        email: Email
+        phone: Telefono
+        birthday: Compleanno
+        facebook: Facebook
+        created_at: Creare a

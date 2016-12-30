@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cep: MyString
+  name: MyString
+  neighborhood: MyString
+  customer_id: 
+
+two:
+  cep: MyString
+  name: MyString
+  neighborhood: MyString
+  customer_id: 

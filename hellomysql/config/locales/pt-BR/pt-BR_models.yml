@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      customer: Cliente
+    attributes:
+      customer:
+        id: Id
+        name: Nome
+        birthday: Nascimento
+        email: Email
+        cpf: CPF
+        status: Status
+        created_at: Criado em

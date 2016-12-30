@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      contact: Contato
+    attributes:
+      contact:
+        id: Id
+        name: Nome
+        email: Email
+        phone: Telefone
+        birthday: Nascimento
+        facebook: Facebook
+        created_at: Criado em
