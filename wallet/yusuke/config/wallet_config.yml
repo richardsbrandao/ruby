@@ -1,0 +1,12 @@
+defaults: &defaults
+  url: 'http://localhost:3001'
+  timeout: 3
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

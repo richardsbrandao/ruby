@@ -1,0 +1,23 @@
+<h1><%=@indexer[:name]%></h1>
+
+<strong>Descrição:</strong> <%=@indexer[:description]%>
+
+<table class="table table-condensed text-center">
+  <thead>
+    <tr>
+      <th class="text-center">Período</th>
+      <th class="text-center">%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @variations.each do |variation| %>
+        <tr>
+          <td><%="#{variation[:year]}/#{variation[:month]}"%></td>
+          <td><%=number_to_percentage(variation[:percent], precision: 2)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+- Depois, calcular variação a cada ano e nos ultimos 12 meses (procurar gem de paginação)

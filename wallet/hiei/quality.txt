@@ -1,0 +1,3 @@
+brakeman -o brakeman.html
+bundle exec gemsurance --format html
+metric_fu

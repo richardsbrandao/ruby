@@ -1,0 +1,31 @@
+<h1>Criar indice</h1>
+
+<div class="alert-danger">
+  <% if @result.present? && @result[:errors].present?
+       @result[:errors].each do |error| %>
+      <%=error%><br>
+  <% end
+     end %>
+</div>
+
+<%= form_tag('/indexers', method: 'post') do %>
+
+    <div class="control-group">
+      <%= label_tag(:name, 'Nome: ') %>
+      <div class="controls">
+        <%= text_field_tag(:name) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag(:description, 'Descrição: ') %>
+      <div class="controls">
+        <%= text_area_tag(:description) %>
+      </div>
+    </div>
+
+    <div class="btn-group-sm">
+      <%= submit_tag('Salvar') %>
+    </div>
+
+<% end %>
+
