@@ -1,0 +1,15 @@
+ap Company.page(1).per(2).padding(0)
+  Company Load (3.5ms)  SELECT  "companies".* FROM "companies" LIMIT ? OFFSET ?  [["LIMIT", 2], ["OFFSET", 0]]
+
+ap Company.page(1).per(2).padding(1)
+  Company Load (0.1ms)  SELECT  "companies".* FROM "companies" LIMIT ? OFFSET ?  [["LIMIT", 2], ["OFFSET", 1]]
+
+Company.page(1)
+  Company Load (3.4ms)  SELECT  "companies".* FROM "companies" LIMIT ? OFFSET ?  [["LIMIT", 25], ["OFFSET", 0]]
+
+Company.page(2)
+  Company Load (2.4ms)  SELECT  "companies".* FROM "companies" LIMIT ? OFFSET ?  [["LIMIT", 25], ["OFFSET", 25]]
+
+
+rails g kaminari:config
+
