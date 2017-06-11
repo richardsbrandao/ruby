@@ -4,7 +4,7 @@ class VacanciesController < ApplicationController
   # GET /vacancies
   # GET /vacancies.json
   def index
-    @vacancies = Vacancy.all
+    @vacancies = Vacancy.cached_all
   end
 
   # GET /vacancies/1
@@ -64,7 +64,7 @@ class VacanciesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vacancy
-      @vacancy = Vacancy.find(params[:id])
+      @vacancy = Vacancy.cached_find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

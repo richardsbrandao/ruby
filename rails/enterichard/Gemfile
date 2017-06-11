@@ -6,7 +6,9 @@ git_source(:github) do |repo_name|
 end
 
 gem 'kaminari'
+gem 'paranoia', '~> 2.2'
 gem 'awesome_print'
+gem 'rack-mini-profiler'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
