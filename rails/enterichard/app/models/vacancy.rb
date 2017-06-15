@@ -1,5 +1,6 @@
 class Vacancy < ApplicationRecord
   belongs_to :company, touch: true
+  include Ability
 
   acts_as_paranoid
 
