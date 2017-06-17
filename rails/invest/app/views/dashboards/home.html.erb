@@ -1,0 +1,15 @@
+<h1>Dashboards#home</h1>
+
+<p>Objetivos</p>
+<div>
+	<% @goals.each do |goal| %>
+		<%=goal.name%><br>
+		Valor Atual: <%=goal.total%><br>
+		Objetivo: <%=goal.value%><br>
+		Aporte Mensal: <%=goal.monthly_input%><br>
+		<% (DateTime.now.year..goal.year).each do |year| %>
+			Previsão em <%=year%>: <%=goal.forecast(10, year)%> <br>
+		<% end %>
+		<br>
+	<% end %>
+</div>
