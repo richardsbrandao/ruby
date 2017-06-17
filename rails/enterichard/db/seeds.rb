@@ -24,12 +24,12 @@ vacancies = Vacancy.create([
 ])
 
 employees = Employee.create([
-	{name: 'Joaozinho', birthday: '1987-03-19 10:30:14'.to_date, gender: 'M', city: 'Rio de Janeiro', vacancy: vacancies.first},
-	{name: 'Zeca', birthday: '1996-07-11 10:30:14'.to_date, gender: 'M', city: 'São Paulo', vacancy: vacancies.second},
-	{name: 'Josefina', birthday: '1990-05-19 10:30:14'.to_date, gender: 'F', city: 'Amazonas', vacancy: vacancies.third},
-	{name: 'Sassa', birthday: '1987-12-30 10:30:14'.to_date, gender: 'M', city: 'Rio de Janeiro', vacancy: vacancies.fourth},
-	{name: 'West', birthday: '1985-11-12 10:30:14'.to_date, gender: 'M', city: 'São Paulo', vacancy: vacancies.fifth},
-	{name: 'Paulinho', birthday: '1983-11-20 10:30:14'.to_date, gender: 'M', city: 'Rio de Janeiro', vacancy: vacancies.last}
+	{name: 'Joaozinho', email: 'richardsbrandao@gmail.com', birthday: '1987-03-19 10:30:14'.to_date, gender: 'M', city: 'Rio de Janeiro', vacancy: vacancies.first},
+	{name: 'Zeca', email: 'richardsbrandao@gmail.com', birthday: '1996-07-11 10:30:14'.to_date, gender: 'M', city: 'São Paulo', vacancy: vacancies.second},
+	{name: 'Josefina', email: 'richardsbrandao@gmail.com', birthday: '1990-05-19 10:30:14'.to_date, gender: 'F', city: 'Amazonas', vacancy: vacancies.third},
+	{name: 'Sassa', email: 'richardsbrandao@gmail.com', birthday: '1987-12-30 10:30:14'.to_date, gender: 'M', city: 'Rio de Janeiro', vacancy: vacancies.fourth},
+	{name: 'West', email: 'richardsbrandao@gmail.com',birthday: '1985-11-12 10:30:14'.to_date, gender: 'M', city: 'São Paulo', vacancy: vacancies.fifth},
+	{name: 'Paulinho', email: 'richardsbrandao@gmail.com', birthday: '1983-11-20 10:30:14'.to_date, gender: 'M', city: 'Rio de Janeiro', vacancy: vacancies.last}
 ])
 
 skills = Skill.create([
@@ -54,3 +54,5 @@ Skill.all[6].employees = [Employee.first,    Employee.second]
 Skill.all[7].employees = [Employee.third,    Employee.fifth]
 Skill.all[8].employees = [Employee.second,   Employee.fifth]
 Skill.all[9].employees = [Employee.first,    Employee.all.last]
+
+Skill.first.vacancies = [Vacancy.first]

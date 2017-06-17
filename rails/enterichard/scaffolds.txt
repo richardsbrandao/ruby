@@ -6,4 +6,6 @@ Empresa 1.* 0.* Vagas 1 1 Empregado 0.* 0.* Skills
   rails g scaffold Employee name:string birthday:date gender:string city:string vacancy:references
   rails g scaffold Skill name:string category:string
   rails g migration create_join_table_skill_employee skill employee (descomentar migration e botar has_and_belongs_to_many)
+  rails g migration create_join_table_skill_vacancy skill vacancy
+  rails g migration add_email_to_employees email:string
   rake db:create db:migrate
