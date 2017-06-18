@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: saved_money_percentages
@@ -14,7 +16,7 @@ class SavedMoneyPercentage < ApplicationRecord
   belongs_to :saved_money
   belongs_to :goal
 
-  def self.find_by_saved_money_and_goal(saved_money_id, goal_id) 
-  	find_by(saved_money_id: saved_money_id, goal_id: goal_id) 
+  def self.find_by_saved_money_and_goal(saved_money_id, goal_id)
+    find_by(saved_money_id: saved_money_id, goal_id: goal_id)
   end
 end
