@@ -18,6 +18,7 @@ class SavedMoney < ApplicationRecord
 
   def amount_per_goal(goal_id)
   	saved_money_percentage = SavedMoneyPercentage.find_by_saved_money_and_goal(self.id, goal_id)
+  	return 0 unless saved_money_percentage.present?
   	self.value.percentage_of(saved_money_percentage.value)
   end
 end
