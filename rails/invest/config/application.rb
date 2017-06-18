@@ -13,8 +13,8 @@ module Invest
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
-    config.autoload_paths << "#{Rails.root}/app/models/goals"
-    config.autoload_paths << "#{Rails.root}/lib/core_extensions"
+    config.autoload_paths << Rails.root.join('app', 'models', 'goals')
+    config.autoload_paths << Rails.root.join('lib', 'core_extensions')
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
