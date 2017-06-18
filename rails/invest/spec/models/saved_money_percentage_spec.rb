@@ -1,4 +1,16 @@
 # frozen_string_literal: true
+# == Schema Information
+#
+# Table name: saved_money_percentages
+#
+#  id             :integer          not null, primary key
+#  value          :integer
+#  saved_money_id :integer
+#  goal_id        :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 
 require 'rails_helper'
 

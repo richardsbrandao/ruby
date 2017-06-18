@@ -25,11 +25,11 @@ Ir.create([
 ])
 
 Amount.create([
-	{name: 'Europa', year: 2019, value: 30_000, monthly_input: 1000}
+	{name: 'Europa', year: 2019, amount: Money.new(3_000_000, 'BRL'), monthly_input: Money.new(1000, 'BRL')}
 ])
 
 Rent.create([
-	{name: 'Aposentadoria', year: 2041, value: 6_000, monthly_input: 1000}
+	{name: 'Aposentadoria', year: 2041, amount: Money.new(600_000, 'BRL'), monthly_input: Money.new(1000, 'BRL')}
 ])
 
 Investiment.create([
@@ -39,9 +39,9 @@ Investiment.create([
 ])
 
 SavedMoney.create([
-	{value: 6000.0, date: "2017-05-10 00:00:00".to_time, investiment: Investiment.third},
-	{value: 6300.0, date: "2017-05-10 00:00:00".to_time, investiment: Investiment.second},
-	{value: 22_467.63, date: "2017-05-31 00:00:00".to_time, investiment: Investiment.first}
+	{amount: Money.new(600_000, 'BRL'), date: "2017-05-10 00:00:00".to_time, investiment: Investiment.third},
+	{amount: Money.new(630_000, 'BRL'), date: "2017-05-10 00:00:00".to_time, investiment: Investiment.second},
+	{amount: Money.new(2_246_763, 'BRL'), date: "2017-05-31 00:00:00".to_time, investiment: Investiment.first}
 ])
 
 SavedMoneyPercentage.create([

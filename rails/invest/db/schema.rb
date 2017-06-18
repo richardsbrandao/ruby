@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616033308) do
+ActiveRecord::Schema.define(version: 20170618214734) do
 
   create_table "goals", force: :cascade do |t|
     t.string "name"
     t.integer "year"
-    t.integer "value"
-    t.decimal "monthly_input"
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "BRL", null: false
+    t.integer "monthly_input_cents", default: 0, null: false
+    t.string "monthly_input_currency", default: "BRL", null: false
   end
 
   create_table "index_values", force: :cascade do |t|
@@ -64,11 +66,12 @@ ActiveRecord::Schema.define(version: 20170616033308) do
   end
 
   create_table "saved_moneys", force: :cascade do |t|
-    t.decimal "value", precision: 8, scale: 2
     t.datetime "date"
     t.integer "investiment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "BRL", null: false
     t.index ["investiment_id"], name: "index_saved_moneys_on_investiment_id"
   end
 

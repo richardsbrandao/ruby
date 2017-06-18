@@ -1,18 +1,19 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: saved_moneys
 #
-#  id             :integer          not null, primary key
-#  value          :decimal(8, 2)
-#  date           :datetime
-#  investiment_id :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id              :integer          not null, primary key
+#  date            :datetime
+#  investiment_id  :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  amount_cents    :integer          default(0), not null
+#  amount_currency :string           default("BRL"), not null
 #
 
 class SavedMoney < ApplicationRecord
+  monetize :amount_cents, :as => 'amount'
   belongs_to :investiment
   has_many :saved_money_percentages
 
