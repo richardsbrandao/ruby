@@ -25,10 +25,4 @@ class Goal < ApplicationRecord
 				period_number_in_months(months).yearly_interest_rate(interest).
 				interest_calculator.compound_interest_with_monthly_input
 	end
-
-	private
-
-	def compound_interest(interest, months)
-		total*(1+(interest/12.0)/100) ** months 
-	end
 end
