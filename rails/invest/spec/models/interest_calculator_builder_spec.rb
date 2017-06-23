@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe InterestCalculatorBuilder, type: :model do
   describe '#interest_calculator' do
-    let(:total) { 1000 }
-    let(:monthly_input) { 100 }
+    let(:total) { Money.new(1000) }
+    let(:monthly_input) { Money.new(100) }
     let(:months) { 12 }
     let(:interest) { 10.20 }
 

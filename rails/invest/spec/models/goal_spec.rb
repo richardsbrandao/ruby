@@ -28,7 +28,7 @@ RSpec.describe Goal, type: :model do
     investiment_fundo_a = build(:fundo_a, ir: tax)
 
     sm_one = build(:saved_money, investiment: investiment_fundo_a)
-    sm_two = build(:saved_money, value: BigDecimal.new(2_000), investiment: investiment_tesouro)
+    sm_two = build(:saved_money, amount: Money.new(200_000, 'BRL'), investiment: investiment_tesouro)
 
     create(:saved_money_percentage, goal: goal_1, value: 70, saved_money: sm_one)
     create(:saved_money_percentage, goal: goal_2, value: 30, saved_money: sm_one)
@@ -41,13 +41,13 @@ RSpec.describe Goal, type: :model do
     context 'calculate total if there is more than one saved money' do
       let(:goal) { Goal.first }
 
-      it { is_expected.to eq(2700) }
+      it { is_expected.to eq(Money.new(270_000, 'BRL')) }
     end
 
     context 'calculate totall if there is only one saved money' do
       let(:goal) { Goal.second }
 
-      it { is_expected.to eq(300) }
+      it { is_expected.to eq(Money.new(30_000, 'BRL')) }
     end
   end
 
@@ -62,13 +62,13 @@ RSpec.describe Goal, type: :model do
     context 'forecast for long time ahead' do
       let(:year) { 2030 }
 
-      it { expect(subject.to_f).to eq(612_026.3507133059) }
+      it { expect(subject.to_f).to eq(61_202_635.07133059) }
     end
 
     context 'forecast for same year' do
       let(:year) { now.year }
 
-      it { expect(subject.to_f).to eq(15_031.318961480934) }
+      it { expect(subject.to_f).to eq(1_503_131.8961480934) }
     end
   end
 end

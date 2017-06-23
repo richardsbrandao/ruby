@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :interest_calculator, class: InterestCalculator do
-    current_value 1000
-    monthly_input 100
+    current_value { Money.new(100_000) }
+    monthly_input { Money.new(10_000) }
     period_number 10
     interest_rate 0.01
 

@@ -8,12 +8,12 @@ class InterestCalculatorBuilder
   end
 
   def current_value(current_value)
-    @interest_calculator.current_value = current_value if current_value.is_a? Numeric
+    @interest_calculator.current_value = current_value if current_value.is_a? Money
     self
   end
 
   def monthly_input(monthly_input)
-    @interest_calculator.monthly_input = monthly_input if monthly_input.is_a? Numeric
+    @interest_calculator.monthly_input = monthly_input if monthly_input.is_a? Money
     self
   end
 

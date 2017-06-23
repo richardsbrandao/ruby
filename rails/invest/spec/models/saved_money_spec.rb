@@ -16,6 +16,7 @@
 require 'rails_helper'
 
 RSpec.describe SavedMoney, type: :model do
+  let(:default_currency) { 'BRL' }
   let(:goal_1) { create(:amount_goal) }
   let(:goal_2) { create(:amount_goal, name: 'Viagem') }
 
@@ -25,7 +26,7 @@ RSpec.describe SavedMoney, type: :model do
     investiment_fundo_a = build(:fundo_a, ir: tax)
 
     sm_one = build(:saved_money, investiment: investiment_fundo_a)
-    sm_two = build(:saved_money, value: BigDecimal.new(2_000), investiment: investiment_tesouro)
+    sm_two = build(:saved_money, amount: Money.new(200_000, default_currency), investiment: investiment_tesouro)
 
     create(:saved_money_percentage, goal: goal_1, value: 70, saved_money: sm_one)
     create(:saved_money_percentage, goal: goal_2, value: 30, saved_money: sm_one)
@@ -38,8 +39,8 @@ RSpec.describe SavedMoney, type: :model do
     context 'all saved money for specific goal' do
       let(:goal_id) { goal_1.id }
       it { expect(subject.size).to eq(2) }
-      it { expect(subject.first.value).to eq(1_000) }
-      it { expect(subject.second.value).to eq(2_000) }
+      it { expect(subject.first.amount).to eq(Money.new(100_000, )) }
+      it { expect(subject.second.amount).to eq(Money.new(200_000, default_currency)) }
     end
 
     context 'no saved money for invalid goal' do
@@ -55,20 +56,20 @@ RSpec.describe SavedMoney, type: :model do
     context 'calculate amount per goal when its divided in percentage' do
       let(:saved_money_example) { SavedMoney.first }
 
-      it { is_expected.to eq(700) }
+      it { is_expected.to eq(Money.new(70_000, default_currency)) }
     end
 
     context 'calculate amount per goal when its not divided (100%)' do
       let(:saved_money_example) { SavedMoney.second }
 
-      it { is_expected.to eq(2000) }
+      it { is_expected.to eq(Money.new(200_000, default_currency)) }
     end
 
     context 'calculate amount per invalid goal' do
       let(:saved_money_example) { SavedMoney.first }
       let(:goal_id) { 999_999 }
 
-      it { expect(subject).to eq(0) }
+      it { expect(subject).to eq(Money.new(0, default_currency)) }
     end
   end
 end

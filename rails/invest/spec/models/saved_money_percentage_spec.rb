@@ -24,7 +24,7 @@ RSpec.describe SavedMoneyPercentage, type: :model do
     investiment_fundo_a = build(:fundo_a, ir: tax)
 
     sm_one = build(:saved_money, investiment: investiment_fundo_a)
-    sm_two = build(:saved_money, value: BigDecimal.new(2_000), investiment: investiment_tesouro)
+    sm_two = build(:saved_money, amount: Money.new(200_000, 'BRL'), investiment: investiment_tesouro)
 
     create(:saved_money_percentage, goal: goal_1, value: 70, saved_money: sm_one)
     create(:saved_money_percentage, goal: goal_2, value: 30, saved_money: sm_one)

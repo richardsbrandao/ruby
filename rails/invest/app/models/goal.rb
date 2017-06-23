@@ -22,7 +22,7 @@ class Goal < ApplicationRecord
   has_many :saved_money_percentages
 
   def total
-    SavedMoney.for_goal(id).reduce(0) { |sum, saved_money| saved_money.amount_per_goal(id) + sum }.to_f
+    SavedMoney.for_goal(id).reduce(0) { |sum, saved_money| saved_money.amount_per_goal(id) + sum }
   end
 
   def forecast(interest, year)

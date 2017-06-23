@@ -6,7 +6,7 @@ RSpec.describe Numbers::Operations do
   describe '#BigDecimal.percentage_of' do
     let(:percentage_of) { 2 }
 
-    subject { BigDecimal.new(200).percentage_of(percentage_of) }
+    subject { 200.percentage_of(percentage_of) }
 
     context 'some percentage of' do
       it { is_expected.to eq(4) }
