@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: saved_moneys
@@ -13,7 +14,7 @@
 #
 
 class SavedMoney < ApplicationRecord
-  monetize :amount_cents, :as => 'amount'
+  monetize :amount_cents, as: 'amount'
   belongs_to :investiment
   has_many :saved_money_percentages
 

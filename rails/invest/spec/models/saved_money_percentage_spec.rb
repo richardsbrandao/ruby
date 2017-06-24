@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: saved_money_percentages
@@ -10,7 +11,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 
 require 'rails_helper'
 

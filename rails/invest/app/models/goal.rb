@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: goals
@@ -16,8 +17,8 @@
 #
 
 class Goal < ApplicationRecord
-  monetize :amount_cents, :as => 'amount'
-  monetize :monthly_input_cents, :as => 'monthly_input'
+  monetize :amount_cents, as: 'amount'
+  monetize :monthly_input_cents, as: 'monthly_input'
 
   has_many :saved_money_percentages
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: goals
@@ -14,7 +15,6 @@
 #  monthly_input_cents    :integer          default(0), not null
 #  monthly_input_currency :string           default("BRL"), not null
 #
-
 
 require 'rails_helper'
 
@@ -62,13 +62,13 @@ RSpec.describe Goal, type: :model do
     context 'forecast for long time ahead' do
       let(:year) { 2030 }
 
-      it { expect(subject.to_f).to eq(61_202_635.07133059) }
+      it { is_expected.to eq(Money.new(61_202_635.07)) }
     end
 
     context 'forecast for same year' do
       let(:year) { now.year }
 
-      it { expect(subject.to_f).to eq(1_503_131.8961480934) }
+      it { is_expected.to eq(Money.new(1_503_131.89)) }
     end
   end
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: saved_moneys
@@ -11,7 +12,6 @@
 #  amount_cents    :integer          default(0), not null
 #  amount_currency :string           default("BRL"), not null
 #
-
 
 require 'rails_helper'
 
@@ -39,7 +39,7 @@ RSpec.describe SavedMoney, type: :model do
     context 'all saved money for specific goal' do
       let(:goal_id) { goal_1.id }
       it { expect(subject.size).to eq(2) }
-      it { expect(subject.first.amount).to eq(Money.new(100_000, )) }
+      it { expect(subject.first.amount).to eq(Money.new(100_000)) }
       it { expect(subject.second.amount).to eq(Money.new(200_000, default_currency)) }
     end
 

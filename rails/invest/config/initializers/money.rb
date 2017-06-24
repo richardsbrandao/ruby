@@ -1,9 +1,9 @@
 # encoding : utf-8
+# frozen_string_literal: true
 
 MoneyRails.configure do |config|
-
   # To set the default currency
-  
+
   config.default_currency = :brl
 
   # Set default bank object
@@ -31,8 +31,7 @@ MoneyRails.configure do |config|
                            type: :integer,       # column type
                            present: true,        # column will be created
                            null: false,          # other options will be treated as column options
-                           default: 0
-                         }
+                           default: 0 }
   #
   # config.currency_column = { prefix: '',
   #                            postfix: '_currency',

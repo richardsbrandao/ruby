@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :saved_money, class: SavedMoney do
-    amount {Money.new(100_000, 'BRL')}
+    amount { Money.new(100_000, 'BRL') }
     date DateTime.now
     investiment { nil }
 
