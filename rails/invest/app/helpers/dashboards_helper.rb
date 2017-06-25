@@ -8,7 +8,7 @@ module DashboardsHelper
 
   def forecast(goal)
   	(DateTime.now.year..goal.year).each.map do |year| 
-  		{ year: year.to_s, forecast: goal.forecast(10, year).cents } 
+  		{ year: year.to_s, forecast: goal.forecast(10, year).cents / 100 } 
   	end
   end
 end

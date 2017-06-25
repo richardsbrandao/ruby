@@ -23,7 +23,9 @@ class Goal < ApplicationRecord
   has_many :saved_money_percentages
 
   def total
-    SavedMoney.for_goal(id).reduce(0) { |sum, saved_money| saved_money.amount_per_goal(id) + sum }
+    Rails.cache.fetch("total_goal_#{id}") do
+      SavedMoney.for_goal(id).includes(:saved_money_percentages).reduce(0) { |sum, saved_money| saved_money.amount_per_goal(id) + sum }
+    end
   end
 
   def forecast(interest, year)
@@ -31,5 +33,9 @@ class Goal < ApplicationRecord
     InterestCalculatorBuilder.new.current_value(total).monthly_input(monthly_input)
                              .period_number_in_months(months).yearly_interest_rate(interest)
                              .interest_calculator.compound_interest_with_monthly_input
+  end
+
+  def self.cached_all
+    Rails.cache.fetch('all_goals') { Goal.all }
   end
 end

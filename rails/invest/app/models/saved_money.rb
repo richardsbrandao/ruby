@@ -20,8 +20,8 @@ class SavedMoney < ApplicationRecord
 
   scope :for_goal, ->(goal_id) { joins(:saved_money_percentages).where('saved_money_percentages.goal_id': goal_id) }
 
-  def amount_per_goal(goal_id)
-    saved_money_percentage = SavedMoneyPercentage.find_by(saved_money: id, goal: goal_id)
+  def amount_per_goal
+    saved_money_percentage = saved_money_percentages.detect { |saved_money_percentage| saved_money_percentage.saved_money.id == id } 
     return Money.new(0, amount_currency) if saved_money_percentage.blank?
     Money.new(amount_cents.percentage_of(saved_money_percentage.value), amount_currency)
   end

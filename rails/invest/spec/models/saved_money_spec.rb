@@ -50,8 +50,7 @@ RSpec.describe SavedMoney, type: :model do
   end
 
   describe '#amount_per_goal' do
-    subject { saved_money_example.amount_per_goal(goal_id) }
-    let(:goal_id) { goal_1.id }
+    subject { saved_money_example.amount_per_goal }
 
     context 'calculate amount per goal when its divided in percentage' do
       let(:saved_money_example) { SavedMoney.first }
@@ -63,13 +62,6 @@ RSpec.describe SavedMoney, type: :model do
       let(:saved_money_example) { SavedMoney.second }
 
       it { is_expected.to eq(Money.new(200_000, default_currency)) }
-    end
-
-    context 'calculate amount per invalid goal' do
-      let(:saved_money_example) { SavedMoney.first }
-      let(:goal_id) { 999_999 }
-
-      it { expect(subject).to eq(Money.new(0, default_currency)) }
     end
   end
 end
