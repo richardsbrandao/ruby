@@ -2,18 +2,15 @@
 
 <div class="row">
 	<% @goals.each do |goal| %>
-		<div class="col-md-5">
-			<div class="col-md-12"><%=goal.name%></div>
+		<div class="col-md-12 text-center">
+			<div class="col-md-12 goal_name"><%=goal.name%></div>
 			<div class="col-md-12"><strong>Valor Atual:</strong> <%=humanized_money_with_symbol goal.total%></div>
 			<div class="col-md-12">
 				<strong>Objetivo:</strong> 
 				<%="#{humanized_money_with_symbol goal.amount} #{goal_type_description(goal)}"%>
 			</div>
 			<div class="col-md-12"><strong>Aporte Mensal:</strong> <%=humanized_money_with_symbol goal.monthly_input%></div>
-			
-			<% (DateTime.now.year..goal.year).each do |year| %>
-				Previsão em <%=year%>: <%=humanized_money_with_symbol goal.forecast(10, year)%> <br>
-			<% end %>
+			<%= content_tag :div, "", id: "goal_#{goal.id}", data: {forecast: forecast(goal)} %>
 			<br>
 		</div>
 	<% end %>
