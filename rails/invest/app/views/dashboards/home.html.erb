@@ -1,5 +1,18 @@
 <h2>Objetivos</h2>
 
+<%= form_tag(dashboards_path, method: "post") do %>
+   <div class="row">
+        <div class="form-group col-lg-12">
+            <input type="number" name="inflaction_rate" step="0.05" class="form-control input-small percentage pull-left" placeholder="Inflação (4,5%)" /> 
+            <input type="number" name="interest_rate" step="0.05" class="form-control input-small percentage pull-left" placeholder="Taxa de Juros (6,5%)" /> 
+            <input type="number" name="optimism_rate" step="0.05" class="form-control input-small percentage pull-left" placeholder="Otimismo (7,0%)" /> 
+        </div>
+        <div class="form-group col-lg-3">
+            <button type="submit" class="btn btn-primary">Simulação</button>
+        </div>
+    </div>
+<% end %>
+
 <div class="row">
 	<% @goals.each do |goal| %>
 		<div class="col-md-12 text-center">

@@ -24,7 +24,7 @@ class Goal < ApplicationRecord
 
   def total
     Rails.cache.fetch("total_goal_#{id}") do
-      SavedMoney.for_goal(id).includes(:saved_money_percentages).reduce(0) { |sum, saved_money| saved_money.amount_per_goal(id) + sum }
+      SavedMoney.for_goal(id).includes(:saved_money_percentages).reduce(0) { |sum, saved_money| saved_money.amount_per_goal + sum }
     end
   end
 
