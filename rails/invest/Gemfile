@@ -12,6 +12,7 @@ gem 'money-rails', '~>1'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 gem 'rack-mini-profiler'
+gem 'rails_admin', '~> 1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'

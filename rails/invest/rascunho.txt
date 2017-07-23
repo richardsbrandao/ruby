@@ -1,0 +1,28 @@
+Indexador
+	IPCA
+	SELIC
+	CDI
+Ativos
+	Fundos de Investimentos = VALOR
+	Tesouro Direto = VALOR (Indexador, Rendimento, tipo[pre-pos], imposto, )
+	Ações = VALOR
+
+
+Planejamento
+	Gastos
+	Capacidade de poupar
+	Idade
+	Aposentar
+	Linha de Vida
+	Padrão de vida valor
+	Padrão de vida valor aposentado
+	valor aposentadoria
+
+
+Resultado
+	Mínimo que precisa ter para se aposentar com 65 e acabar o dinheiro na LINHA DE VIDA
+	Mínimo que precisa ter para viver somente com os juros e manter o principal
+	Mínimo que precisa ter para continuar crescendo o patrimonio
+
+	O quanto ele precisaria ter para alcançar o objetivo no momento com o passar dos anos
+	

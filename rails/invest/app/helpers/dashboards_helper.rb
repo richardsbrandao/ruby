@@ -7,7 +7,6 @@ module DashboardsHelper
   end
 
   def forecast(goal)
-    puts "#{params.inspect}"
     inflaction_rate = params[:inflaction_rate].present? ? params[:inflaction_rate] : RATES_CONFIG.dig('rates', 'inflaction')
     interest_rate = params[:interest_rate].present? ? params[:interest_rate] : RATES_CONFIG.dig('rates', 'interest')
     optimism_rate = params[:optimism_rate].present? ? params[:optimism_rate] : RATES_CONFIG.dig('rates', 'optimism')
