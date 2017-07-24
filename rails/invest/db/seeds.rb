@@ -6,6 +6,7 @@ SavedMoney.all.each { |model| model.destroy }
 Ir.all.each { |model| model.destroy }
 Amount.all.each { |model| model.destroy }
 Rent.all.each { |model| model.destroy }
+User.all.each { |model| model.destroy }
 
 Index.create([
 	{name: 'SELIC'},
@@ -50,4 +51,9 @@ SavedMoneyPercentage.create([
 	{value: 30, saved_money: SavedMoney.second, goal: Rent.first},
 	{value: 70, saved_money: SavedMoney.first, goal: Amount.first},
 	{value: 30, saved_money: SavedMoney.first, goal: Rent.first}
+])
+
+User.create([
+	{email: 'richardsbrandao@gmail.com', password: '123456', password_confirmation: '123456', admin: true},
+	{email: 'ketherin_hp@hotmail.com', password: '123456', password_confirmation: '123456', admin: false}
 ])
