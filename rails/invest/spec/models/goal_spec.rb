@@ -71,4 +71,23 @@ RSpec.describe Goal, type: :model do
       it { is_expected.to eq(Money.new(1_503_131.89)) }
     end
   end
+
+  describe '#goal_line_forecast' do
+    let(:goal) { Goal.first }
+    subject { goal.goal_line_forecast(year_forecast) }
+    let(:now) { "#{current_year}-06-01 00:00:00".to_time }
+    before { Timecop.travel(now) }
+
+    context 'goal line forecast for amount goal in and of year' do
+      let(:current_year) { 2017 }
+      let(:year_forecast) { current_year }
+
+      it { expect(subject).to eq(Money.new(0, 'BRL')) }
+    end
+
+    context 'goal line forecast for amount after some years' do
+      let(:current_year) { 2017 }
+      let(:year_forecast) { 2020 }
+    end
+  end
 end

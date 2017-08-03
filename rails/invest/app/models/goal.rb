@@ -30,9 +30,26 @@ class Goal < ApplicationRecord
 
   def forecast(interest, year)
     months = DateTime.now.diff_in_months_from_now("#{year}-12-31 00:00:00".to_time)
-    InterestCalculatorBuilder.new.current_value(total).monthly_input(monthly_input)
-                             .period_number_in_months(months).yearly_interest_rate(interest)
+    InterestCalculatorBuilder.new.with_current_value(total).with_monthly_input(monthly_input)
+                             .with_period_number_in_months(months).with_yearly_interest_rate(interest)
                              .interest_calculator.compound_interest_with_monthly_input
+  end
+
+  def goal_line_forecast(year)
+    months = DateTime.now.diff_in_months_from_now("#{self.year}-12-31 00:00:00".to_time)
+    # estimate_value = InterestCalculatorBuilder.new.with_current_value(total).with_monthly_input(monthly_input)
+    #                            .with_period_number_in_months(months).with_yearly_interest_rate(interest)
+    #                            .interest_discovery.compound_interest_with_monthly_input
+    interest = 2.00
+    while interest < 1020 do
+      interest = interest + 0.25
+      estimate_value = InterestCalculatorBuilder.new.with_current_value(total).with_monthly_input(monthly_input)
+                               .with_period_number_in_months(months).with_yearly_interest_rate(interest)
+                               .interest_discovery.compound_interest_with_monthly_input
+      puts "#{estimate_value} <<"
+      return estimate_value if estimate_value.cents > self.amount_cents
+    end
+
   end
 
   def self.cached_all
