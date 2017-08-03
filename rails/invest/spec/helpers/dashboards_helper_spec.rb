@@ -55,38 +55,45 @@ RSpec.describe DashboardsHelper do
       it { expect(subject.first[:inflaction]).to eq(3_091) }
       it { expect(subject.first[:interest]).to eq(3_161) }
       it { expect(subject.first[:optimism]).to eq(3_232) }
+      it { expect(subject.first[:goal_line]).to eq(6165) }
     end
 
     context 'for 5 years' do
+      let(:goal) { create(:amount_goal, monthly_input: Money.new(500_000, 'BRL')) }
       let(:current_year) { 2019 } 
       let(:current_month) { 5 }
 
       it { expect(subject.size).to eq(5) } 
 
       it { expect(subject.first[:year]).to eq('2019') } 
-      it { expect(subject.first[:inflaction]).to eq(3070) }
-      it { expect(subject.first[:interest]).to eq(3124) }
-      it { expect(subject.first[:optimism]).to eq(3179) }
+      it { expect(subject.first[:inflaction]).to eq(38422) }
+      it { expect(subject.first[:interest]).to eq(38743) }
+      it { expect(subject.first[:optimism]).to eq(39066) }
+      it { expect(subject.first[:goal_line]).to eq(39640) }
 
       it { expect(subject.second[:year]).to eq('2020') } 
-      it { expect(subject.second[:inflaction]).to eq(3195) }
-      it { expect(subject.second[:interest]).to eq(3350) }
-      it { expect(subject.second[:optimism]).to eq(3512) }
+      it { expect(subject.second[:inflaction]).to eq(101100) }
+      it { expect(subject.second[:interest]).to eq(103506) }
+      it { expect(subject.second[:optimism]).to eq(105985) }
+      it { expect(subject.second[:goal_line]).to eq(110502) }
 
       it { expect(subject.third[:year]).to eq('2021') } 
-      it { expect(subject.third[:inflaction]).to eq(3326) }
-      it { expect(subject.third[:interest]).to eq(3592) }
-      it { expect(subject.third[:optimism]).to eq(3880) }
+      it { expect(subject.third[:inflaction]).to eq(166331) }
+      it { expect(subject.third[:interest]).to eq(172952) }
+      it { expect(subject.third[:optimism]).to eq(179911) }
+      it { expect(subject.third[:goal_line]).to eq(192960) }
 
       it { expect(subject.fourth[:year]).to eq('2022') } 
-      it { expect(subject.fourth[:inflaction]).to eq(3461) }
-      it { expect(subject.fourth[:interest]).to eq(3852) }
-      it { expect(subject.fourth[:optimism]).to eq(4286) }
+      it { expect(subject.fourth[:inflaction]).to eq(234220) }
+      it { expect(subject.fourth[:interest]).to eq(247417) }
+      it { expect(subject.fourth[:optimism]).to eq(261578) }
+      it { expect(subject.fourth[:goal_line]).to eq(288909) }
 
       it { expect(subject.fifth[:year]).to eq('2023') } 
-      it { expect(subject.fifth[:inflaction]).to eq(3_602) }
-      it { expect(subject.fifth[:interest]).to eq(4_130) }
-      it { expect(subject.fifth[:optimism]).to eq(4_735) }
+      it { expect(subject.fifth[:inflaction]).to eq(304875) }
+      it { expect(subject.fifth[:interest]).to eq(327266) }
+      it { expect(subject.fifth[:optimism]).to eq(351796) }
+      it { expect(subject.fifth[:goal_line]).to eq(400559) }
     end
   end
 end

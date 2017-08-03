@@ -4,8 +4,8 @@ $(document).ready(function() {
 		  element: $(this).attr('id'),
 		  data: $(this).data('forecast'),
 		  xkey: 'year',
-		  ykeys: ['inflaction', 'interest', 'optimism'],
-		  labels: ['Inflação', 'SELIC', 'Otimista'],
+		  ykeys: ['inflaction', 'interest', 'optimism', 'goal_line'],
+		  labels: ['Inflação', 'SELIC', 'Otimista', 'Minimo'],
 		  preUnits: 'R$'
 		});
 	});

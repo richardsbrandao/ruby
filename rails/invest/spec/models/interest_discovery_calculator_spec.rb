@@ -20,10 +20,16 @@ RSpec.describe InterestDiscoveryCalculator, type: :model do
       it { is_expected.to eq(14.75) }
     end
 
-    context 'discovery intereste rate with montly input and unreacheable goal go until 100% discovery' do
+    context 'discovery interest rate with montly input and unreacheable goal go until 100% discovery' do
       let(:example) { build(:interest_discovery_calculator, goal: Money.new(1_000_000)) } 
 
       it { is_expected.to eq(100) }
+    end
+
+    context 'discovery 0 for interest rate if goal is less than amount' do
+      let(:example) { build(:interest_discovery_calculator, goal: Money.new(1_000)) } 
+
+      it { is_expected.to eq(0) }
     end
   end
 end

@@ -82,12 +82,7 @@ RSpec.describe Goal, type: :model do
       let(:current_year) { 2017 }
       let(:year_forecast) { current_year }
 
-      it { expect(subject).to eq(Money.new(0, 'BRL')) }
-    end
-
-    context 'goal line forecast for amount after some years' do
-      let(:current_year) { 2017 }
-      let(:year_forecast) { 2020 }
+      it { expect(subject).to eq(25.25) }
     end
   end
 end

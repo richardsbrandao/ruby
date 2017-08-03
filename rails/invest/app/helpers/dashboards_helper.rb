@@ -9,13 +9,13 @@ module DashboardsHelper
   def forecast(goal)
     objective_rate = goal.amount_cents
 
-  	(DateTime.now.year..goal.year).each.map do |year| 
+    (DateTime.now.year..goal.year).each.map do |year| 
   		{ 
   			year: year.to_s, 
   			inflaction: goal.forecast(inflaction_rate.to_f, year).cents / 100 ,
   			interest: goal.forecast(interest_rate.to_f, year).cents / 100 ,
   			optimism: goal.forecast(optimism_rate.to_f, year).cents / 100,
-        goal_line: goal.goal_line_forecast(year).cents / 100
+        goal_line: goal.forecast(goal.goal_line_forecast(year), year).cents / 100
   		} 
   	end
   end

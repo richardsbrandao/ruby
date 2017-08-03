@@ -11,14 +11,13 @@ class InterestDiscoveryCalculator
   end
 
   def find_yearly_interest_with_monthly_input
+    return 0 if @goal.cents < @current_value.cents
     interest = 0
-    byebug
     while interest < RATES_CONFIG.dig('rates', 'max') do
       interest = increase_interest(interest)
       estimate_value = compound_interest_with_monthly_input(interest)
       return interest if estimate_value.cents > @goal.cents
     end
-    byebug
     RATES_CONFIG.dig('rates', 'max')
   end
 
