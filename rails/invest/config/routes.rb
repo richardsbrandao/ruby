@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'dashboards/home'
+  get 'dashboards/investiments'
   post 'dashboards' => 'dashboards#home'
 
   root 'dashboards#home'

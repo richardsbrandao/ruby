@@ -26,17 +26,17 @@ Ir.create([
 ])
 
 Amount.create([
-	{name: 'Europa', year: 2019, amount: Money.new(3_000_000, 'BRL'), monthly_input: Money.new(1000, 'BRL')}
+	{name: 'Europa', year: 2019, amount: Money.new(30_000_000, 'BRL'), monthly_input: Money.new(100_000, 'BRL')}
 ])
 
 Rent.create([
-	{name: 'Aposentadoria', year: 2041, amount: Money.new(600_000, 'BRL'), monthly_input: Money.new(1000, 'BRL')}
+	{name: 'Aposentadoria', year: 2041, amount: Money.new(600_000, 'BRL'), monthly_input: Money.new(100_000, 'BRL')}
 ])
 
 Investiment.create([
-	{name: 'Tesouro SELIC', model: 'RENNDA_FIXA', ir: Ir.second, year_yield: 10.25},
-	{name: 'Gap Multiport FIM', model: 'FUNDO', ir: Ir.second, year_yield: 13.00},
-	{name: 'AZ Quest Total Return FIM', model: 'FUNDO', ir: Ir.second, year_yield: 12.50}
+	{name: 'Tesouro SELIC', model: 'RENNDA_FIXA', ir: Ir.second, year_yield: 10.25, liquidate: 1},
+	{name: 'Gap Multiport FIM', model: 'FUNDO', ir: Ir.second, year_yield: 13.00, liquidate: 1},
+	{name: 'AZ Quest Total Return FIM', model: 'FUNDO', ir: Ir.second, year_yield: 12.50, liquidate: 27}
 ])
 
 SavedMoney.create([

@@ -7,4 +7,8 @@ class DashboardsController < ApplicationController
   def home
     @goals = Goal.cached_all
   end
+
+  def investiments
+    # Liquidez (Pizza), Tipo (Pizza), Imposto (Pizza), Valores (Mes a Mes), Objetivo (Mes a Mes), 
+  end
 end
