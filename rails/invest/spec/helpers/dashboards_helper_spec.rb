@@ -96,4 +96,40 @@ RSpec.describe DashboardsHelper do
       it { expect(subject.fifth[:goal_line]).to eq(400559) }
     end
   end
+
+  describe '#heritage' do
+    subject { dashboard_helper.new.heritage }
+    let(:goal) { create(:amount_goal, monthly_input: Money.new(500_000, 'BRL')) }
+    let(:new_now) { Time.local(current_year, current_month, 10, 0, 0, 0) }
+    before { Timecop.travel(new_now) }
+
+    before do
+      tax = build(:default_tax)
+      investiment_tesouro = build(:tesouro_direto, ir: tax)
+      investiment_fundo_a = build(:fundo_a, ir: tax)
+
+      sm_one = build(:saved_money, investiment: investiment_fundo_a, date: new_now)
+      sm_two = build(:saved_money, amount: Money.new(200_000, 'BRL'), investiment: investiment_tesouro, date: 1.month.ago)
+      sm_three = build(:saved_money, amount: Money.new(300_000, 'BRL'), investiment: investiment_tesouro, date: 1.month.ago)
+      sm_four = build(:saved_money, amount: Money.new(100_000, 'BRL'), investiment: investiment_tesouro, date: 2.month.ago)
+      sm_five = build(:saved_money, amount: Money.new(50_000, 'BRL'), investiment: investiment_tesouro, date: 3.month.ago)
+
+      create(:saved_money_percentage, goal: goal, saved_money: sm_one)
+      create(:saved_money_percentage, goal: goal, saved_money: sm_two)
+      create(:saved_money_percentage, goal: goal, saved_money: sm_three)
+      create(:saved_money_percentage, goal: goal, saved_money: sm_four)
+      create(:saved_money_percentage, goal: goal, saved_money: sm_five)
+    end
+
+    context 'calculate heritage by period' do
+      let(:current_year) { 2017 }
+      let(:current_month) { 10 }
+      it { expect(subject.size).to eq(4) }
+
+      it { expect(subject["#{current_year}-#{current_month}"]).to eq(7_500) }
+      it { expect(subject["#{current_year}-#{current_month-1}"]).to eq(6_500) }
+      it { expect(subject["#{current_year}-#{current_month-2}"]).to eq(1_500) }
+      it { expect(subject["#{current_year}-#{current_month-3}"]).to eq(500) }
+    end
+  end
 end
