@@ -9,6 +9,6 @@ class DashboardsController < ApplicationController
   end
 
   def investiments
-    # Liquidez (Pizza), Tipo (Pizza), Imposto (Pizza), Valores (Mes a Mes), Objetivo (Mes a Mes), 
+    # Liquidez (Pizza), Tipo (Pizza), Imposto (Pizza),  Objetivo (Mes a Mes), 
   end
 end

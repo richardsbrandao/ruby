@@ -20,6 +20,12 @@ class SavedMoney < ApplicationRecord
 
   scope :for_goal, ->(goal_id) { joins(:saved_money_percentages).where('saved_money_percentages.goal_id': goal_id) }
 
+  def self.cached_all_with_percentages
+  	Rails.cache.fetch("all_percentages") do
+  		SavedMoney.includes(:saved_money_percentages).all.order(:date)
+  	end
+  end
+
   def amount_per_goal
     saved_money_percentage = saved_money_percentages.detect { |saved_money_percentage| saved_money_percentage.saved_money.id == id } 
     return Money.new(0, amount_currency) if saved_money_percentage.blank?

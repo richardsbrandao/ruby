@@ -126,10 +126,50 @@ RSpec.describe DashboardsHelper do
       let(:current_month) { 10 }
       it { expect(subject.size).to eq(4) }
 
-      it { expect(subject["#{current_year}-#{current_month}"]).to eq(7_500) }
-      it { expect(subject["#{current_year}-#{current_month-1}"]).to eq(6_500) }
-      it { expect(subject["#{current_year}-#{current_month-2}"]).to eq(1_500) }
-      it { expect(subject["#{current_year}-#{current_month-3}"]).to eq(500) }
+      it { expect(subject.first[:period]).to eq("#{current_year}-#{current_month-3}") }
+      it { expect(subject.first[:accumulated]).to eq(500) }
+
+      it { expect(subject.second[:period]).to eq("#{current_year}-#{current_month-2}") }
+      it { expect(subject.second[:accumulated]).to eq(1_500) }
+
+      it { expect(subject.third[:period]).to eq("#{current_year}-#{current_month-1}") }
+      it { expect(subject.third[:accumulated]).to eq(6_500) }
+
+      it { expect(subject.fourth[:period]).to eq("#{current_year}-#{current_month}") }
+      it { expect(subject.fourth[:accumulated]).to eq(7_500) }
     end
+  end
+
+  describe '#objectives' do
+    let(:goal_one) { create(:amount_goal, name: 'Goal 1', monthly_input: Money.new(500_000, 'BRL')) }
+    let(:goal_two) { create(:amount_goal, name: 'Goal 2', monthly_input: Money.new(500_000, 'BRL')) }
+    let(:new_now) { Time.local(current_year, current_month, 10, 0, 0, 0) }
+    before { Timecop.travel(new_now) }
+
+    before do
+      tax = build(:default_tax)
+      investiment_tesouro = build(:tesouro_direto, ir: tax)
+      investiment_fundo_a = build(:fundo_a, ir: tax)
+
+      sm_one = build(:saved_money, investiment: investiment_fundo_a, date: new_now)
+      sm_two = build(:saved_money, amount: Money.new(200_000, 'BRL'), investiment: investiment_tesouro, date: 1.month.ago)
+      sm_three = build(:saved_money, amount: Money.new(300_000, 'BRL'), investiment: investiment_tesouro, date: 1.month.ago)
+      sm_four = build(:saved_money, amount: Money.new(100_000, 'BRL'), investiment: investiment_tesouro, date: 1.month.ago)
+      sm_five = build(:saved_money, amount: Money.new(50_000, 'BRL'), investiment: investiment_tesouro, date: 2.month.ago)
+
+      create(:saved_money_percentage, goal: goal_one, saved_money: sm_one)
+      create(:saved_money_percentage, goal: goal_one, saved_money: sm_two)
+      create(:saved_money_percentage, goal: goal_two, saved_money: sm_three)
+      create(:saved_money_percentage, goal: goal_two, saved_money: sm_four)
+      create(:saved_money_percentage, goal: goal_one, saved_money: sm_five)
+    end
+
+    subject { dashboard_helper.new.objectives }
+
+    it { expect(subject.size).to eq(4) }
+
+    it { expect(subject.first[:period]).to eq() }
+    it { expect(subject.first[:name]).to eq() }
+    it { expect(subject.first[:value]).to eq() }
   end
 end

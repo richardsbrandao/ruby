@@ -42,7 +42,7 @@ Investiment.create([
 SavedMoney.create([
 	{amount: Money.new(600_000, 'BRL'), date: "2017-05-10 00:00:00".to_time, investiment: Investiment.third},
 	{amount: Money.new(630_000, 'BRL'), date: "2017-05-10 00:00:00".to_time, investiment: Investiment.second},
-	{amount: Money.new(2_246_763, 'BRL'), date: "2017-05-31 00:00:00".to_time, investiment: Investiment.first}
+	{amount: Money.new(2_246_763, 'BRL'), date: "2017-06-01 00:00:00".to_time, investiment: Investiment.first}
 ])
 
 SavedMoneyPercentage.create([
