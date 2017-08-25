@@ -1,5 +1,6 @@
 class Person < ApplicationRecord
-	include Elasticsearch::Model
+	  include Elasticsearch::Model
+    #http://www.rubydoc.info/gems/elasticsearch-model/Elasticsearch/Model/Callbacks
   	include Elasticsearch::Model::Callbacks
 
   	# index_name Rails.application.class.parent_name.underscore

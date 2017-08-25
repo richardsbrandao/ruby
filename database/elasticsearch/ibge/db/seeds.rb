@@ -31,4 +31,10 @@ client.bulk index: 'people',
             body:  Person.all[3..-1].as_json.map { |a| { index: { _id: a.delete('id'), data: a } } },
             refresh: true
             
-# r.results.first._source.name
+Person.first.__elasticsearch__.delete_document # Destroy only in ES
+Person.new(name: 'Richard', gender: 'M', birthyear: 1992).__elasticsearch__.index_document # Create Only in ES
+Person.first.__elasticsearch__.update_document # Recreate using existing document and ignoring last line
+Person.first.__elasticsearch__.update_document_attributes(birthyear: 1992) # Update attributes for this document
+
+# persons = Person.search('name: Richard') || Person.search('name: Rich*') || Person.search('_id: 1') || Person.search('name: Richard AND birthyear: 1992')
+# persons.results.first._source.name
