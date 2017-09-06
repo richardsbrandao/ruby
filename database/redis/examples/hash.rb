@@ -15,6 +15,9 @@ redis.hget('richard', 'age')
 puts "HGET[richard][last_name]"
 redis.hget('richard', 'last_name')
 
+richard_hash = redis.hgetall('richard')
+puts "HGETALL[richard] = #{richard_hash}"
+
 hexists_richard = redis.hexists('richard', 'age')
 puts "HEXISTS[richard][age] = #{hexists_richard}"
 hexists_nao_existe = redis.hexists('richard', 'nao_existe')
@@ -24,15 +27,30 @@ puts "EXISTS[richard] = #{exists_richard}"
 not_exists = redis.exists('nao_existe')
 puts "EXISTS[richard] = #{not_exists}"
 
-# HDEL
-# HSETNX
-# HGETALL
+hdel = redis.hdel('richard', 'age')
+puts "HDEL[richard][age] = #{hdel}"
+hexists_richard = redis.hexists('richard', 'age')
+puts "HEXISTS[richard][age] = #{hexists_richard}"
+
+hsetnx_first = redis.hsetnx('ketherin', 'age', 26)
+hsetnx_second = redis.hsetnx('ketherin', 'age', 1000)
+puts "HSETNX[ketherin][age] = #{hsetnx_first}"
+puts "HSETNX[ketherin][age] = #{hsetnx_second}"
+ketherin_hash = redis.hgetall('ketherin')
+puts "HGETALL[ketherin] = #{ketherin_hash}"
 
 
-# HINCRBY
+hkeys_richard = redis.hkeys('richard')
+hvals_richard = redis.hvals('richard')
+puts "HKEYS[richard] = #{hkeys_richard}"
+puts "HVALS[richard] = #{hvals_richard}"
 
-# HKEYS
-# HVALS
 
-# HMGET
-# HMSET
+hmget = redis.hmget('richard', 'age', 'gender')
+puts "HMGET[richard]{age, gender} = #{hmget}"
+hmset = redis.hmset('richard', 'marital_status', 'MARRIED', 'zipcode', '21341140')
+richard_hash = redis.hgetall('richard')
+puts "HGETALL[richard] = #{richard_hash}"
+
+hincrby = redis.hincrby('ketherin', 'age', 3)
+puts "HINCRBY[ketherin][age]+3 = #{hincrby}"
