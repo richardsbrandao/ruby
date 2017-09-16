@@ -61,27 +61,5 @@ redis.set 'lorem_ipsum', 'Lorem Ipsum é simplesmente uma simulação de texto'
 str = redis.getrange 'lorem_ipsum', 3, 16
 puts "GETRANGE = #{str}"
 
-
-# Client List
-# Client GETNAME
-# Client SETNAME
-# DBSIZE
-# DUMP
-
-# GEOADD
-# GEOHASH
-# GEOPOS
-# GEODIST
-
-# EXPIRE
-# EXPIREAT
-# FLUSHALL
-
-# HDEL
-# HEXISTS
-# HGET
-# HGETALL
-# HINCRBY
-# HEYS
-# HSET
-# HVALS
+dbsize = redis.dbsize
+puts "DBSIZE: #{dbsize} keys"
