@@ -1,0 +1,4 @@
+app/models/vacancy
+app/models/skill
+
+app/models/concerns/ability

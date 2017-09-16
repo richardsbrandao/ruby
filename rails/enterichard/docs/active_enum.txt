@@ -1,0 +1,6 @@
+rails generate active_enum:install
+
+config/initializers/active_enum
+
+app/models/speciality
+app/models/skill.rb

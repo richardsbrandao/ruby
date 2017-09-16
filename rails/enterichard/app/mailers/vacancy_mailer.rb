@@ -1,5 +1,5 @@
 class VacancyMailer < ApplicationMailer
-	default from: "richardsbrandao@gmail.com"
+	default from: "m4utcdev@gmail.com"
 
 	def alert_job_by_skill_name(vacancy, skill_name)
 		employees = Employee.find_by_skill_name(skill_name)
