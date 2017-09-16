@@ -7,8 +7,8 @@ companies = Company.create([
 	{name: 'M4U', foundation: 10.years.ago}, 
 	{name: 'OLX', foundation: 4.years.ago}, 
 	{name: 'B2W', foundation: 8.years.ago},
-  {name: '99', foundation: 1.year.ago},
-  {name: 'Uber', foundation: 8.years.ago},
+	{name: '99', foundation: 1.year.ago},
+	{name: 'Uber', foundation: 8.years.ago},
 	{name: 'Google', foundation: 19.years.ago},
 	{name: 'Microsoft', foundation: 42.years.ago},
 	{name: 'Apple', foundation: 41.years.ago},
@@ -33,16 +33,16 @@ employees = Employee.create([
 ])
 
 skills = Skill.create([
-	{name: 'Java', category: 'BACKEND'},
-	{name: 'Ruby', category: 'BACKEND'},
-	{name: 'Oracle', category: 'BACKEND'},
-	{name: 'Node', category: 'BACKEND'},
-	{name: 'Mongo', category: 'BACKEND'},
-	{name: 'Photoshop', category: 'DESIGN'},
-	{name: 'Html', category: 'DESIGN'},
-	{name: 'Javascript', category: 'BACKEND'},
-	{name: 'CSS', category: 'DESIGN'},
-	{name: 'IOS', category: 'MOBILE'},
+	{name: 'Java', category: Speciality[:BACKEND]},
+	{name: 'Ruby', category: Speciality[:BACKEND]},
+	{name: 'Oracle', category: Speciality[:BACKEND]},
+	{name: 'Node', category: Speciality[:BACKEND]},
+	{name: 'Mongo', category: Speciality[:BACKEND]},
+	{name: 'Photoshop', category: Speciality[:DESIGN]},
+	{name: 'Html', category: Speciality[:DESIGN]},
+	{name: 'Javascript', category: Speciality[:BACKEND]},
+	{name: 'CSS', category: Speciality[:DESIGN]},
+	{name: 'IOS', category: Speciality[:MOBILE]},
 ])
 
 Skill.first.employees =  [Employee.first,    Employee.third]

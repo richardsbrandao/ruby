@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :category %>
-    <%= form.text_field :category, id: :skill_category %>
+    <%= form.select :category, Speciality.to_select %>
   </div>
 
   <div class="actions">
