@@ -21,18 +21,6 @@ class StockManager < SimpleDelegator
     @products = products
   end
 
-  # def sample
-  #   @products.sample
-  # end
-
-  # def empty?
-  #   @products.empty?
-  # end
-
-  # def pop(product)
-  #   @products.pop(product)
-  # end
-
   def select!(product_to_remove)
     @products.select! { |product| product.name != product_to_remove.name }
   end
