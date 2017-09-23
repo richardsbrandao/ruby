@@ -1,0 +1,15 @@
+http://localhost:3000/resque/queues
+
+config/rescue.yml
+config/initializers/resque.rb
+Gemfile
+
+app/models/newsletter.rb
+app/workers/newsletter_worker.rb
+
+lib/tasks/resque.rake
+
+rails c
+	> Newsletter.find(1).enqueue
+
+bundle exec rake environment resque:work QUEUE=newsletter
