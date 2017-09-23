@@ -1,0 +1,9 @@
+Configurações:
+	Gemfile
+	sidekiq.rb
+	development.rb
+
+rails g job newsletter => Criar job
+
+rails runner "NewsletterJob.perform_later(1,2,3)" => Adicionar item na fila
+bundle exec sidekiq => Rodar filas
