@@ -14,6 +14,8 @@ class Book
 		state :rereading
 		state :evaluated
 
+		after_all_transitions :log_status
+
 		event :start_reading do
 			transitions :from => :wanting, :to => :reading
 		end
@@ -29,6 +31,10 @@ class Book
 		event :evaluate do
 			transitions :from => [:read, :rereading], :to => :evaluated
 		end
+	end
+
+	def log_status
+		puts "changing from '#{aasm.from_state}' to '#{aasm.to_state}' (event: #{aasm.current_event})"
 	end
 end
 
