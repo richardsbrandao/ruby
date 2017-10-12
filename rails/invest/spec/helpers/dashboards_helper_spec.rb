@@ -147,6 +147,7 @@ RSpec.describe DashboardsHelper do
     before { Timecop.travel(new_now) }
 
     before do
+      byebug
       tax = build(:default_tax)
       investiment_tesouro = build(:tesouro_direto, ir: tax)
       investiment_fundo_a = build(:fundo_a, ir: tax)
@@ -166,10 +167,34 @@ RSpec.describe DashboardsHelper do
 
     subject { dashboard_helper.new.objectives }
 
-    it { expect(subject.size).to eq(4) }
+    context 'calculate objectives by period' do
+      let(:current_year) { 2017 }
+      let(:current_month) { 6 }
 
-    it { expect(subject.first[:period]).to eq() }
-    it { expect(subject.first[:name]).to eq() }
-    it { expect(subject.first[:value]).to eq() }
+      it { expect(subject[:objectives]).not_to be_empty }
+      it { expect(subject[:objectives].size).to eq(3) }
+
+      it { expect(subject[:objectives].first['period']).to eq('2017-4') }
+      it { expect(subject[:objectives].first['goal_1']).to eq(6_000) }
+      it { expect(subject[:objectives].first['goal_2']).to eq(5_000) }
+
+      it { expect(subject[:objectives].second['period']).to eq('2017-5') }
+      it { expect(subject[:objectives].second['goal_1']).to eq(9_000) }
+      it { expect(subject[:objectives].second['goal_2']).to eq(8_000) }
+
+      it { expect(subject[:objectives].third['period']).to eq('2017-6') }
+      it { expect(subject[:objectives].third['goal_1']).to eq(9_500) }
+      it { expect(subject[:objectives].third['goal_2']).to eq(8_000) }
+
+      it { expect(subject[:goals]).not_to be_empty }
+      it { expect(subject[:goals].size).to eq(2) }
+
+      it { expect(subject[:goals].first['key']).to eq('goal_1') }
+      it { expect(subject[:goals].first['label']).to eq('Goal 1') }
+
+      it { expect(subject[:goals].first['key']).to eq('goal_2') }
+      it { expect(subject[:goals].first['label']).to eq('Goal 2') }
+    end
+
   end
 end

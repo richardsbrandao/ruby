@@ -20,5 +20,16 @@ $(document).ready(function() {
 		  preUnits: 'R$'
 		});
 	});
+
+	$('#objectives').each(function() {
+		new Morris.Line({
+			element: $(this).attr('id'),
+			data: $(this).data('objectives'),
+			xkey: 'period',
+			ykeys: $(this).data('goals').map((goal) => goal['key']),
+			labels: $(this).data('goals').map((goal) => goal['label']),
+			preUnits: 'R$'
+		});
+	});
 })
 
