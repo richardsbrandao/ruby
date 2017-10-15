@@ -8,6 +8,7 @@ class Router
 	end
 
 	def app_context
+		# You can see also Rack::URLMap
 		{
 			'/' => [CustomersController, 'index'],
 			'/customers' => [CustomersController, 'index'],
