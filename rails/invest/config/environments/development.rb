@@ -45,6 +45,19 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Logstash.new
+  config.lograge.logger = LogStashLogger.new(type: :tcp, host: 'services', port: 5044)
+  # config.lograge.ignore_actions = ['ServiceCheckController#index']
+  # config.lograge.custom_options = lambda do |event|
+  #   {
+  #     params: event.payload[:params].to_json,
+  #     response_body: event.payload[:response_body],
+  #     request_headers: event.payload[:request_headers],
+  #     tags: event.payload[:cid]
+  #   }
+  # end
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
