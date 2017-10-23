@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: musicians
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  born       :date
+#  country    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  born: 2017-10-21
+  country: MyString
+
+two:
+  name: MyString
+  born: 2017-10-21
+  country: MyString

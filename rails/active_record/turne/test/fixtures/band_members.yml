@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: band_members
+#
+#  id           :integer          not null, primary key
+#  band_id      :integer
+#  musician_id  :integer
+#  role         :string
+#  arrival_at   :date
+#  departure_at :date
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  band_id: 1
+  musician_id: 1
+  role: MyString
+  arrival_at: 2017-10-21
+  departure_at: 2017-10-21
+
+two:
+  band_id: 1
+  musician_id: 1
+  role: MyString
+  arrival_at: 2017-10-21
+  departure_at: 2017-10-21

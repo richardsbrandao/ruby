@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: bands
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  year        :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  category_id :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  year: 1
+
+two:
+  name: MyString
+  year: 1

@@ -1,0 +1,8 @@
+rails g model Category name:string
+rails g model Track name:string duration:decimal
+rails g model Cd year:integer title:string salles:integer
+rails g model Band name:string year:integer
+rails g model Musician name:string born:date country:string
+rails g migration AddBandRefsToCds band:references
+rails g migration create_join_table_cd_track cd track
+rails g model BandMember band_id:integer musician_id:integer role:string arrival_at:date departure_at:date

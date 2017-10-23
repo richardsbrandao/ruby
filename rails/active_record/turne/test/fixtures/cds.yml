@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: cds
+#
+#  id         :integer          not null, primary key
+#  year       :integer
+#  title      :string
+#  salles     :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  band_id    :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: 1
+  title: MyString
+  salles: 1
+
+two:
+  year: 1
+  title: MyString
+  salles: 1
